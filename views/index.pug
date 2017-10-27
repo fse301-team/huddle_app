@@ -1,0 +1,93 @@
+doctype html
+html
+  include includes/head.pug
+  body
+    header(id="fh5co-header")
+      div(class="container")
+        div(class="row")
+          if success
+            div(class="alert alert-success alert-dismissible" role="alert")=success
+              button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                span(aria-hidden="true")
+                  | &times;
+          if error
+            div(class="alert alert-danger alert-dismissible" role="alert")=error
+              button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                span(aria-hidden="true")
+                  | &times;
+        div(class="col-md-6 col-sm-6")
+          div(class="intro")
+            h1(id="fh5co-logo")
+              a(href="/") 
+                img(src="images/logo3.png")
+            h2
+              | Connect with your campus peers.
+            p
+              a(href="#" class="btn btn-primary" disabled)
+                i(class="icon-apple")
+                |  Coming soon on App Store
+        div(class="col-md-6 col-sm-6")
+          figure(class="fh5co-intro-img")
+            img(class="img-1 animate-box" src="images/screenshot_1.jpg" alt="")
+            img(class="img-2 animate-box hidden-xs" src="images/screenshot_2.jpg" alt="")
+    div(id="main")
+      div(class="container")
+        div(class="row fh5co-feature")
+          div(class="col-md-6 col-md-push-6")
+            div(class="fh5co-copy")
+              div(class="fh5co-copy-inner")
+                h2
+                  | Match With Nearby Student
+                p
+                  | Say something about video chat
+          div(class="col-md-6 col-md-pull-6")
+            div(class="fh5co-img")
+              figure(class="fh5co-figure animate-box")
+                img(class="img-2" src="images/screenshot_1.jpg" alt="")
+        div(class="row fh5co-feature fh5co-reverse")
+          div(class="col-md-6")
+            div(class="fh5co-copy")
+              div(class="fh5co-copy-inner")
+                h2
+                  | Video Chat
+                p
+                  | Say something about video chat
+          div(class="col-md-6")
+            div(class="fh5co-img")
+              figure(class="fh5co-figure animate-box")
+                img(class="img-2" src="images/screenshot_2.jpg" alt="")
+        div(class="row fh5co-feature last-feature")
+          div(class="col-md-6 col-md-push-6")
+            div(class="fh5co-copy")
+              div(class="fh5co-copy-inner")
+                h2
+                  | Make New Friends
+                p
+                  | Say something about making friends
+          div(class="col-md-6 col-md-pull-6")
+            div(class="fh5co-img")
+              figure(class="fh5co-figure animate-box")
+                img(class="img-2" src="images/screenshot_3.jpg" alt="")
+      div(id="get-started")
+        div(class="container")
+          div(class="row text-center fh5co-heading")
+            div(class="col-md-8 col-md-offset-2")
+              h2
+                | Subscribe
+              p 
+                | Stay in touch! We are launching soon.
+          div(class="get-started")
+            form(class="form-inline" method="post" action="/subscribe")
+              div(class="col-md-4 col-sm-4")
+                div(class="form-group")
+                  label(for="name" class="sr-only")
+                    | Name
+                  input(type="text" class="form-control" id="name" name="name" placeholder="Ema Smith")
+              div(class="col-md-4 col-sm-4")
+                div(class="form-group")
+                  label(for="email" class="sr-only")
+                    | Email
+                  input(type="email" class="form-control" id="email" name="email" placeholder="ema@smith.me")
+              div(class="col-md-4 col-sm-4")
+                button(type="submit" class="btn btn-default btn-block") Subscribe
+    include includes/body_script.pug
