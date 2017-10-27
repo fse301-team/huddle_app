@@ -3,23 +3,25 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
 const firebase = require('firebase')
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
+const validator = require('validator')
+require('dotenv').config()
 
 // initialize Firebase
 firebase.initializeApp({
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: ''
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  databaseURL: process.env.databaseURL,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId
 })
 
 // app settings
 app.set('view engine', 'pug')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-// app.use(express.static(path.join(__dirname + '** dir_name for css & js files')))
+app.use(express.static(path.join(__dirname, 'UI/')))
 
 const firebaseLogin = (email, password, callback) => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -89,10 +91,43 @@ const firebaseRegister = (credential, callback) => {
 
 const readDashboardInfo = (user, callback) => {
   // read user's info from database
-  firebase.database.ref('/users/' + user.uid)
+  firebase.database().ref('/users/' + user.uid)
   return callback()
 }
 
+const recordSubcription = (credential, callback) => {
+  let newSub = firebase.database().ref('/subscriptions').push()
+  newSub.set({
+    name: credential.name,
+    email: credential.email
+  })
+  .then(() => {
+    return callback()
+  })
+  .catch((error) => {
+    console.log(error);
+    return callback("Error occured")
+  })
+}
+
+const validate = (credential, callback) => {
+  if (validator.isEmpty(credential.name)) {
+    return callback("You must enter a name!")
+  }
+  let name = credential.name.split(" ")
+  for(let seed in name){
+    if (!validator.isAlpha(name[seed])) {
+      return callback("Your name is invalid.")
+    }
+  }
+  if (validator.isEmpty(credential.email)) {
+    return callback("You must enter an email!")
+  }
+  if (!validator.isEmail(credential.email)) {
+    return callback("Your email is invalid.")
+  }
+  return callback()
+}
 app.listen(port, () => {
   console.log('app listening on port ' + port)
 })
@@ -147,5 +182,24 @@ app.post('/register', (request, response) => {
 app.get('/logout', (request, response) => {
   firebase.auth().signOut().then(() => {
     response.render('access', {alert: 'You are logged out'})
+  })
+})
+
+app.post('/subscribe', (request, response) => {
+  validate(request.body, (error) => {
+    if (error) {
+      return response.render('index', {error: error})
+    }
+    recordSubcription(request.body, (error) => {
+      let alert = {}
+      if (error) {
+        console.log(error)
+        alert.error = "Internal error occured"
+      }
+      else {
+        alert.success = "You have subscribed! We will let you know when we launch."
+      }
+      return response.render('index', alert)
+    })
   })
 })
