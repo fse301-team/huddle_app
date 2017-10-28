@@ -1,0 +1,52 @@
+doctype html
+html
+  include includes/head.pug
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+  body(class="blue-grey lighten-5")
+    nav
+      div(class="container-fluid orange")
+        div(class="nav-wrapper")
+          a(href="/" class="brand-logo")
+            img(src="images/logo3.png")
+          ul(id="nav-mobile" class="right hide-on-med-and-down")
+            li
+              a(href="/about") Meet The Team
+            li
+              a(href="/product") View The Product
+    div(class="parallax-container" id="index-banner")
+      div(class="section no-pad-bot")
+        div(class="container")
+          h1(class="header center orange-text text-lighten-2" style="margin-top: 2.5em")
+            | Contact Us
+          div(class="row center")
+            h4(class="header col s12 white-text light")
+              | We'd love to hear from you.
+      div(class="parallax")
+        img(src="images/contact-2.jpg" style="display: block; transform: translate3d(-50%, 227px, 0px); height: 200%")
+    div(class="container")
+      div(class="section")
+        div(class="row")
+          div(class="input-field col s6")
+           input(placeholder="Placeholder" id="first_name" type="text" class="validate")
+           label(for="first_name") First Name
+          div(class="input-field col s6")
+           input(id="last_name" type="text" class="validate")
+           label(for="last_name") Last Name
+        div(class="row")
+          div(class="input-field col s6")
+            input(placeholder="Placeholder" id="email" type="email" class="validate")
+            label(for="first_name") Email
+          div(class="input-field col s6")
+            input(id="last_name" type="number" class="validate")
+            label(for="last_name") Phone number
+        div(class="row")
+          div(class="input-field col s12")
+            textarea(id="textarea1" class="materialize-textarea")
+            label(for="textarea1") Your Message
+        button(type="submit" class="waves-effect waves-light btn") Send
+    footer(class="page-footer orange")
+      div(class="footer-copyright")
+        div(class="container")
+          | © 2014 Copyright Text
+          a(class="grey-text text-lighten-4 right" href="/") Home
+    include includes/body_script
