@@ -128,6 +128,7 @@ const validate = (credential, callback) => {
   }
   return callback()
 }
+
 app.listen(port, () => {
   console.log('app listening on port ' + port)
 })
@@ -152,6 +153,14 @@ app.get('/dashboard', (request, response) => {
       response.redirect('/access')
     }
   })
+})
+
+app.get('/about', (request, response) => {
+  response.render('about')
+})
+
+app.get('/contact', (request, response) => {
+  response.render('contact')
 })
 
 // from login/register page, user wants to log in
