@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 480px) {
   #main {
-    margin-top: 8em;
+    margin-top: 1em;
   }
 }
 
@@ -446,7 +446,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
-  border-radius: 30px;
+  border-radius: 5px;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
