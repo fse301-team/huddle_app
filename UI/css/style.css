@@ -267,7 +267,9 @@ h1, h2, h3, h4, h5, h6, figure {
 @media screen and (max-width: 992px) {
   .fh5co-feature {
     overflow: hidden;
-    height: inherit !important;
+    height: 55em;
+    margin-bottom: 0;
+    padding-top: 0
   }
 }
 .fh5co-feature .fh5co-copy {
