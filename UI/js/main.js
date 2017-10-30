@@ -1,5 +1,5 @@
 ;(function () {
-	
+
 	'use strict';
 
 
@@ -27,7 +27,7 @@
 
 
 	var testimonialCarousel = function(){
-		
+
 		var owl = $('.owl-carousel-fullwidth');
 		owl.owlCarousel({
 			items: 1,
@@ -48,7 +48,7 @@
 		$('.animate-box').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -71,9 +71,9 @@
 							el.removeClass('item-animate');
 						},  k * 200, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '85%' } );
@@ -81,11 +81,15 @@
 
 
 
-	
+
 	$(function(){
 		testimonialCarousel();
 		contentWayPoint();
 	});
-
+	
+	$(document).ready(function(){
+		$('.carousel').carousel();
+	});
+	$('.carousel.carousel-slider').carousel({fullWidth: true});
 
 }());
