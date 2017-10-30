@@ -2,6 +2,7 @@ doctype html
 html
   include includes/head.pug
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+  link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
   body(class="blue-grey lighten-5")
     nav
       div(class="container-fluid orange")
@@ -10,9 +11,7 @@ html
             img(src="images/logo3.png")
           ul(id="nav-mobile" class="right hide-on-med-and-down")
             li
-              a(href="/product") View The Product
-            li
-              a(href="/contact") Contact
+              a(href="/contact") Contact Us
     div(class="parallax-container" id="index-banner")
       div(class="section no-pad-bot")
         div(class="container")
@@ -33,44 +32,56 @@ html
                   span(class="card-title")=member.name
                   p=member.description
                 div(class="card-action")
-                  each link in member.links
-                    a(href="mailto:" + link.url)=link.name
+                    a(class="btn btn-floating" href="mailto:" + member.email)
+                      i(class="small material-icons") contact_mail
           +members({
-          name: "Olu Gbadebo", 
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 
-          links: [
-            {url: "fb.me", name: "Facebook"}, 
-            {url: "twitter.com", name: "Twitter"}, 
-            {url: "instagram.com", name: "Instagram"}
-            ]
+          name: "Brett Nisson", 
+          description: "I’m 25, and my major is business entrepreneurship. I have experience not only with business start-ups, but also with professional web and mobile app developers. Although I am not a coder, I am proficient with Photoshop and have created 2 full wireframes for prospective apps that look just like real, functional apps.", 
+          email: "rnisson@asu.edu"
           })
           +members({
           name: "Olu Gbadebo", 
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 
-          links: [
-            {url: "fb.me", name: "Facebook"}, 
-            {url: "twitter.com", name: "Twitter"}, 
-            {url: "instagram.com", name: "Instagram"}
-            ]
+          description: "I’m a Computer Science Junior and I have a ton of experience in Web Development, including database, authentication, and User Interface. I’m also proficient in Python for package and software development, Java for software and Android development, and JavaScript for both client & server side (NodeJS). I’m always in favor of implementing software processes to projects of any kind. ", 
+          email: "odgbadeb@asu.edu"
           })
           +members({
-          name: "Olu Gbadebo", 
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 
-          links: [
-            {url: "fb.me", name: "Facebook"}, 
-            {url: "twitter.com", name: "Twitter"}, 
-            {url: "instagram.com", name: "Instagram"}
-            ]
+          name: "Nikola Uzelac", 
+          description: " I’m currently a junior studying computer science. I’ve had two software engineering internships so far and I plan to land my third one this summer. I have experience with JavaScript, TypeScript, Node, C/C++, and much much more. I’ve also toyed around with Google's Firebase which I believe will play a critical role in our application as don’t have time to build a fully scalable backend. I’m a pretty personable guy and I think we have a solid team.", 
+          email: "nuzelac@asu.edu"
           })
           +members({
-          name: "Olu Gbadebo", 
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 
-          links: [
-            {url: "fb.me", name: "Facebook"}, 
-            {url: "twitter.com", name: "Twitter"}, 
-            {url: "instagram.com", name: "Instagram"}
-            ]
+          name: "Max Becker", 
+          description: "I’m a Junior Computer Systems Engineering major, which is a bit of a combination of CS and EE. I have experience coding in Java, JavaScript, JQuery, c/c++, Python and web development in html, css, and the like. This past summer I worked an internship at a power supply company mostly writing code for inhouse data mining / data storage utilities, but got plenty of experience working with diverse teams in pressured environments. I haven’t worked much in a mobile environment, but would love to gain some experience this semester.", 
+          email: "maxbeckerr@gmail.com"
           })
+          +members({
+          name: "Zi Han", 
+          description: " I’m a Senior of Electrical Engineering major. I have experience with real-time digital signal processor, communication system, and also coding. As a Senior, I did lots of research of different topics. My researching skills may help us solve different kinds of problems. ", 
+          email: "zyhan@asu.edu"
+          })
+    div(class="container-fluid orange" style="padding-bottom: 4em")
+      h1(class="header center white-text text-lighten-2" style="margin-top: 2.5em")
+        | About
+    div(class="container-fluid"  style="padding-left: 0; padding-right: 0;")
+      div(class="carousel carousel-slider center" data-indicators="true")
+        div(class="carousel-fixed-item center")
+        div(class="carousel-item blue-grey black-text" href="#one!")
+          h1
+          | who we are and how long we have been in business (list the founders and their bios)
+          p(class="white-text")
+        div(class="carousel-item blue-grey black-text" href="#two!")
+          h1
+          | what we provide summarizing the products and services
+          p(class="white-text")
+        div(class="carousel-item blue-grey black-text" href="#three!")
+          h1
+          | why we are the company to deal with
+          p(class="white-text")
+        div(class="carousel-item blue-grey black-text" href="#four!")
+          h1
+          | when we can assist you and information about project time lines etc.
+          p(class="white-text")
+        
     footer(class="page-footer orange")
       div(class="footer-copyright")
         div(class="container")
